@@ -7,8 +7,8 @@ get '/' do
   guess = params["guess"].to_i
   cheat = params["cheat"]
   message = check_guess(guess)
-  cheat_mode = cheat_mode(cheat)
-  erb :index, :locals => {:number => SECRET_NUMBER, :message => message, :cheat_mode => cheat_mode}
+  answer = cheat_mode(cheat)
+  erb :index, :locals => {:number => SECRET_NUMBER, :message => message, :answer => answer}
 end
 
 def check_guess(guess)
@@ -26,5 +26,5 @@ def check_guess(guess)
 end
 
 def cheat_mode(cheat)
-  message = "The SECRET NUMBER is #{SECRET_NUMBER}" if cheat = true
+  answer = "The SECRET NUMBER is #{SECRET_NUMBER}" if cheat == true
 end
